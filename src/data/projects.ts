@@ -15,7 +15,7 @@ export const projects: Project[] = [
     description: "A book and review API with authentication, built as a group project. I built the reviews API and the review form in the client.",
     image: "/images/book-api.jpg",
     tags: ["Node.js", "Express", "MongoDB", "TypeScript"],
-    repoUrl: "https://github.com/Marcusey/book-api",
+    repoUrl: "https://github.com/Marcusey/api-assignment-books",
   },
 
   {
@@ -24,7 +24,7 @@ export const projects: Project[] = [
     description: "A web shop built with JavaScript, CSS and Vite, with layouts for desktop, tablet and mobile.",
     image: "/images/shop.jpg",
     tags: ["JavaScript", "CSS", "Vite"],
-    repoUrl: "https://github.com/Marcusey/shop-assignment",
+    repoUrl: "https://github.com/Marcusey/shop-assignment-spray",
   },
 
   {
@@ -51,7 +51,7 @@ export const projects: Project[] = [
     description: "A practice project for Git workflows: branches, merges and conflict resolution.",
     image: "/images/github.jpg",
     tags: ["Git", "GitHub"],
-    repoUrl: "https://github.com/Marcusey/github-assignment",
+    repoUrl: "https://github.com/Marcusey/github-assignment-count",
   },
 
   {
