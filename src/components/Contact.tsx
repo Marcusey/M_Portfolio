@@ -1,3 +1,4 @@
+import ContactForm from './ContactForm'
 
 const Contact = () => {
   return (
@@ -14,6 +15,7 @@ const Contact = () => {
           <a href="https://www.linkedin.com/in/marcus-yttermyr">LinkedIn</a>
         </li>
       </ul>
+      <ContactForm />
     </section>
   )
 }
