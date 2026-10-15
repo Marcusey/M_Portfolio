@@ -67,60 +67,77 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
   }
 }
 
+
   return (
+    <form className="contact-form" onSubmit={handleSubmit} noValidate>
+      <div className="form-group">
+        <label htmlFor="name">Name</label>
+        <input
+          id="name"
+          type="text"
+          placeholder="Enter your name..."
+          value={values.name}
+          onChange={e => setValues({ ...values, name: e.target.value })}
+          aria-invalid={Boolean(errors.name)}
+        />
+        {errors.name && <p className="form-error">{errors.name}</p>}
+      </div>
 
-<form onSubmit={handleSubmit} noValidate>
-  <label htmlFor="name">Name</label>
-    <input
-    id="name"
-    type="text"
-    placeholder="Enter your name.."
-    value={values.name}
-    onChange={e => setValues({ ...values, name: e.target.value })}
-/>
-    {errors.name && <p>{errors.name}</p>}
+      <div className="form-group">
+        <label htmlFor="email">Email</label>
+        <input
+          id="email"
+          type="email"
+          placeholder="Enter your email..."
+          value={values.email}
+          onChange={e => setValues({ ...values, email: e.target.value })}
+          aria-invalid={Boolean(errors.email)}
+        />
+        {errors.email && <p className="form-error">{errors.email}</p>}
+      </div>
 
-  <label htmlFor="email">Email</label>
-    <input
-    id="email"
-    type="email"
-    placeholder="..and your email"
-    value={values.email}
-    onChange={e => setValues({ ...values, email: e.target.value })}
- />
-    {errors.email && <p>{errors.email}</p>}
+      <div className="form-group">
+        <label htmlFor="phone">Phone</label>
+        <input
+          id="phone"
+          type="tel"
+          value={values.phone}
+          onChange={e => setValues({ ...values, phone: e.target.value })}
+          aria-invalid={Boolean(errors.phone)}
+        />
+        {errors.phone && <p className="form-error">{errors.phone}</p>}
+      </div>
 
-  <label htmlFor="phone">Phone</label>
-    <input
-    id="phone"
-    type="tel"
-    value={values.phone}
-    onChange={e => setValues({ ...values, phone: e.target.value })}
- />
-    {errors.phone && <p>{errors.phone}</p>}    
+      <div className="form-group">
+        <label htmlFor="subject">Subject</label>
+        <input
+          id="subject"
+          type="text"
+          value={values.subject}
+          onChange={e => setValues({ ...values, subject: e.target.value })}
+          aria-invalid={Boolean(errors.subject)}
+        />
+        {errors.subject && <p className="form-error">{errors.subject}</p>}
+      </div>
 
-  <label htmlFor="subject">Subject</label>
-    <input
-    id="subject"
-    type="text"
-    value={values.subject}
-    onChange={e => setValues({ ...values, subject: e.target.value })}
-/>
-    {errors.subject && <p>{errors.subject}</p>}
+      <div className="form-group">
+        <label htmlFor="message">Message</label>
+        <textarea
+          id="message"
+          placeholder="What's on your mind?"
+          value={values.message}
+          onChange={e => setValues({ ...values, message: e.target.value })}
+          aria-invalid={Boolean(errors.message)}
+        />
+        {errors.message && <p className="form-error">{errors.message}</p>}
+      </div>
 
-  <label htmlFor="message">Message</label>
-    <textarea
-    id="message"
-    placeholder="Whats on your mind?"
-    value={values.message}
-    onChange={e => setValues({ ...values, message: e.target.value })}
-/>
-    {errors.message && <p>{errors.message}</p>}
+      {isSent && (
+        <p role="status">Your message has been sent!</p>
+      )}
 
-    {isSent && <p>Your message has been sent!</p>}
-
-    <button type="submit">Send</button>
-</form>
+      <button type="submit">Send</button>
+    </form>
   )
 }
 
