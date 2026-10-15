@@ -6,17 +6,21 @@ type ProjectCardProps = {
 
 const ProjectCard = ({ project }: ProjectCardProps) => {
   return (
-    <article>
+    <article className="card">
       <img src={project.image} alt={project.title} />
-      <h3>{project.title}</h3>
-      <p>{project.description}</p>
-      <ul>
-        {project.tags.map(tag => (
-          <li key={tag}>{tag}</li>
-        ))}
-      </ul>
-      <a href={project.repoUrl}>Repo</a>
-      {project.liveUrl && <a href={project.liveUrl}>Live demo</a>}
+      <div className="card-body">
+        <h3>{project.title}</h3>
+        <p>{project.description}</p>
+        <ul className="tags">
+          {project.tags.map(tag => (
+            <li key={tag}>{tag}</li>
+          ))}
+        </ul>
+        <div className="card-links">
+          <a href={project.repoUrl}>Repo</a>
+          {project.liveUrl && <a href={project.liveUrl}>Live demo</a>}
+        </div>
+      </div>
     </article>
   )
 }

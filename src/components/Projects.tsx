@@ -13,18 +13,29 @@ const Projects = () => {
   const allTags = ['All', ...new Set(projects.flatMap(project => project.tags))]
 
   return (
-    <section id="projects">
+    <section id="projects" className="projects">
       <h2>Projects</h2>
-      <div>
+      <p className="projects-intro">A selection of my work. Filter by technology.</p>
+      <div className="filters">
         {allTags.map(tag => (
-          <button key={tag} onClick={() => setSelectedTag(tag)}>
+          <button
+            key={tag}
+            className={tag === selectedTag ? 'filter active' : 'filter'}
+            aria-pressed={tag === selectedTag}
+            onClick={() => setSelectedTag(tag)}
+          >
             {tag}
           </button>
         ))}
       </div>
-      {filteredProjects.map(project => (
-        <ProjectCard key={project.id} project={project} />
-      ))}
+      <p className="projects-count">
+        Showing {filteredProjects.length} of {projects.length} projects
+      </p>
+      <div className="project-grid">
+        {filteredProjects.map(project => (
+          <ProjectCard key={project.id} project={project} />
+        ))}
+      </div>
     </section>
   )
 }
