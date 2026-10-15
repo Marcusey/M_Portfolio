@@ -26,6 +26,7 @@ const [values, setValues] = useState<ContactFormValues>({
 })
 
 const [errors, setErrors] = useState<ContactFormErrors>({})
+const [isSent, setIsSent] = useState(false)
 
 const validateForm = () => {
   const newErrors: ContactFormErrors = {}
@@ -56,36 +57,67 @@ const validateForm = () => {
 const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
   e.preventDefault()
 
-const newErrors = validateForm()
+  const newErrors = validateForm()
   setErrors(newErrors)
+
+  if (Object.keys(newErrors).length === 0) {
+    setIsSent(true)
+    setValues({ name: '', email: '', phone: '', subject: '', message: '' })
+  }
 }
 
   return (
 
-<form onSubmit={handleSubmit}>
+<form onSubmit={handleSubmit} noValidate>
   <label htmlFor="name">Name</label>
     <input
     id="name"
     type="text"
-    placeholder={errors.name || 'Enter your name..'}
+    placeholder="Enter your name.."
     value={values.name}
     onChange={e => setValues({ ...values, name: e.target.value })}
 />
+    {errors.name && <p>{errors.name}</p>}
+
   <label htmlFor="email">Email</label>
     <input
     id="email"
     type="email"
-    placeholder={errors.email || '..and your email'}
+    placeholder="..and your email"
     value={values.email}
     onChange={e => setValues({ ...values, email: e.target.value })}
+ />
+    {errors.email && <p>{errors.email}</p>}
+
+  <label htmlFor="phone">Phone</label>
+    <input
+    id="phone"
+    type="tel"
+    value={values.phone}
+    onChange={e => setValues({ ...values, phone: e.target.value })}
+ />
+    {errors.phone && <p>{errors.phone}</p>}    
+
+  <label htmlFor="subject">Subject</label>
+    <input
+    id="subject"
+    type="text"
+    value={values.subject}
+    onChange={e => setValues({ ...values, subject: e.target.value })}
 />
+    {errors.subject && <p>{errors.subject}</p>}
+
   <label htmlFor="message">Message</label>
     <textarea
     id="message"
-    placeholder={errors.message || 'Whats on your mind?'}
+    placeholder="Whats on your mind?"
     value={values.message}
     onChange={e => setValues({ ...values, message: e.target.value })}
 />
+    {errors.message && <p>{errors.message}</p>}
+
+    {isSent && <p>Your message has been sent!</p>}
+
     <button type="submit">Send</button>
 </form>
   )
