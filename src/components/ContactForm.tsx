@@ -56,6 +56,7 @@ const validateForm = () => {
 
 const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
   e.preventDefault()
+  setIsSent(false)
 
   const newErrors = validateForm()
   setErrors(newErrors)
